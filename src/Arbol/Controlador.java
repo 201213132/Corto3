@@ -13,6 +13,7 @@ public class Controlador {
     private static int temp = 0;
     private static int etiqueta = 0;
     private static String c3d = "";
+    private static String etiquetas_salida = "";
     
     /**
      * Reinicia las variables estáticas relacionadas con la generación del
@@ -22,6 +23,7 @@ public class Controlador {
         temp = 0;
         etiqueta = 0;
         c3d = "";
+        etiquetas_salida = "";
     }
     
     /**
@@ -51,6 +53,23 @@ public class Controlador {
      */
     public static String getC3D(){
         return c3d;
+    }
+    
+    /**
+     * Agrega la sentencia que recibe como parámetro a la cadena de código
+     * de tres direcciones que se va generando hasta ese momento.
+     * @param sentencia Código 3D a agregar
+     */
+    public static void agregarES(String sentencia){
+        etiquetas_salida += sentencia;
+    }
+    
+    /**
+     * Devuelve el código 3D generao hasta el momento de su invocación.
+     * @return Código 3D generado
+     */
+    public static String getES(){
+        return etiquetas_salida;
     }
     
 }

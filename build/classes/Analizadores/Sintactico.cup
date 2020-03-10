@@ -65,7 +65,7 @@ precedence left por, div;
 start with INICIO;
 
 /*--------------- 3ra Area: Reglas Semanticas -----------------------*/
-INICIO::= {: Controlador.reiniciar(); :} SWITCH:a ;
+INICIO::= {: Controlador.reiniciar(); :} SWITCH:a {:Controlador.agregarC3D(Controlador.getES()); :};
 
 LISTA_INSTRUCCIONES ::= E:a {: RESULT = a; :} ;
 
@@ -75,8 +75,9 @@ L_CASE ::= L_CASE:a pr_case E:b dospuntos LISTA_INSTRUCCIONES:c {:  String lf = 
                                                                     String lv = Controlador.generaL();
                                                                     String c3d =  "if "+ a.getCad() + " != " + b.getCad() + " goto " + lf + "\n"+"<Sentencias_>\n"+"goto "+lv+ "\n"+lf+":\n";
                                                                     Controlador.agregarC3D(c3d);
+                                                                    Controlador.agregarES(lv+":");
                                                                     RESULT = a;   :} 
     | pr_switch parizq E:a parder llaveizq                      {: RESULT = new Nodo(a.getCad()); :};
 
 
-E::=    entero:a {: RESULT = new Nodo(a);:};
+E::=  entero:a {: RESULT = new Nodo(a);:};

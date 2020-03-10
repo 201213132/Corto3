@@ -180,7 +180,7 @@ class CUP$Sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Nodo a = (Nodo)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-
+		Controlador.agregarC3D(Controlador.getES()); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -223,6 +223,7 @@ class CUP$Sintactico$actions {
                                                                     String lv = Controlador.generaL();
                                                                     String c3d =  "if "+ a.getCad() + " != " + b.getCad() + " goto " + lf + "\n"+"<Sentencias_>\n"+"goto "+lv+ "\n"+lf+":\n";
                                                                     Controlador.agregarC3D(c3d);
+                                                                    Controlador.agregarES(lv+":");
                                                                     RESULT = a;   
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("L_CASE",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
